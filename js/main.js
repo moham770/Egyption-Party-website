@@ -2,8 +2,8 @@ $(document).ready(() => {
   let outerWidthSidebar = $(".sidebar-inner").outerWidth(true);
 
   // todo: loading Screen
-  $(".sk-chase").fadeOut(2000, () => {
-    $("#loading").slideUp(2000, () => {
+  $(".sk-chase").fadeOut(10, () => {
+    $("#loading").slideUp(10, () => {
       $("body").css("overflow", "visible");
     });
   });
@@ -83,4 +83,26 @@ $(".time h4").eq(3).text(` ${seconds } s`)
         $("html, body").animate({scrollTop:"0px"},500)
       })
      
+    // todo:textarea count
+
+    let textarea = document.querySelector("form textarea");
+    let count = document.querySelector("form .count");
+    let maxLength = parseInt(textarea.getAttribute("maxlength"));
+    
+    textarea.addEventListener('input', (e) => {
+      count.innerHTML = maxLength - e.target.value.length;
+      if (e.target.value.length === 100) {
+        count.innerHTML = "You've reached 100 characters.";
+      }
+    });
+    
+    $("form button").click((e) => {
+      e.preventDefault();
+      let inputs = document.querySelectorAll("form input");
+      for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = ''; 
+      }
+      textarea.value = ''; 
+    });
+
 });
