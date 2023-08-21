@@ -2,8 +2,8 @@ $(document).ready(() => {
   let outerWidthSidebar = $(".sidebar-inner").outerWidth(true);
 
   // todo: loading Screen
-  $(".sk-chase").fadeOut(10, () => {
-    $("#loading").slideUp(10, () => {
+  $(".sk-chase").fadeOut(1500, () => {
+    $("#loading").slideUp(1500, () => {
       $("body").css("overflow", "visible");
     });
   });
